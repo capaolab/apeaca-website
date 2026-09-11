@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+/*
+  APEA-CA design system
+  Palette and typography derived from the design prototype in docs/design.
+  Fonts are wired via next/font in layout.tsx (CSS variables below).
+*/
+
+@theme {
+  /* Fonts */
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* Surfaces */
+  --color-cream: #faf8f2;
+  --color-paper: #ffffff;
+
+  /* Ink / text */
+  --color-ink: #171a14;
+  --color-ink-soft: #3b3d36;
+  --color-ink-muted: #4a4b44;
+  --color-ink-faint: #6b6c63;
+
+  /* Brand greens */
+  --color-green: #14683a;
+  --color-green-dark: #0c3b21;
+  --color-green-bright: #2e9d4f;
+
+  /* Green tints */
+  --color-green-tint: #e3f0e4;
+  --color-green-tint-border: #c9dfca;
+  --color-green-deep-ink: #1f3a25;
+  --color-green-soft-ink: #afc4af;
+  --color-green-mist: #d6e3d6;
+
+  /* Accent yellow */
+  --color-gold: #f4c21b;
+  --color-gold-bright: #ffd34f;
+
+  /* Warm / warning */
+  --color-sand: #faf3e4;
+  --color-sand-border: #e8d9b0;
+  --color-rust: #a34a2a;
+  --color-rust-deep: #8a4020;
+  --color-sand-ink: #5a4520;
+
+  /* Neutrals / borders */
+  --color-line: #e4dfd1;
+  --color-line-soft: #ede9de;
+  --color-line-strong: #d8d2c2;
+  --color-stone: #edecde;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Offset for the sticky header when jumping to in-page anchors */
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 500;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--color-green);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--color-green-dark);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-green);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
