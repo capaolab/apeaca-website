@@ -48,7 +48,7 @@ export function AssociacaoForm() {
       </div>
       <button
         type="submit"
-        className="cursor-pointer justify-self-start rounded-[3px] border-none bg-green px-[26px] py-3.5 font-sans text-[15px] font-semibold text-cream transition-colors hover:bg-green-dark"
+        className="btn btn-green justify-self-start px-[26px] py-3.5 font-sans text-[15px]"
       >
         {sent ? "Pedido registrado" : "Enviar"}
       </button>

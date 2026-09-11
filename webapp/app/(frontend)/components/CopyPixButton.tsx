@@ -20,7 +20,7 @@ export function CopyPixButton() {
     <button
       type="button"
       onClick={handleCopy}
-      className="cursor-pointer rounded-[3px] border-none bg-green px-[22px] py-[13px] font-sans text-[15px] font-semibold text-cream transition-colors hover:bg-green-dark"
+      className="btn btn-green px-[22px] py-[13px] font-sans text-[15px]"
     >
       {copied ? "Chave copiada" : "Copiar chave"}
     </button>

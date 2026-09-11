@@ -40,9 +40,9 @@ export default function Instituicao() {
         {cadastro.map((item) => (
           <div
             key={item.rotulo}
-            className="grid grid-cols-[minmax(140px,240px)_1fr] gap-5 border-b border-line-soft py-4"
+            className="grid gap-1.5 border-b border-line-soft py-4 sm:grid-cols-[minmax(140px,240px)_1fr] sm:gap-5"
           >
-            <dt className="pt-[3px] font-mono text-[11px] uppercase tracking-[0.08em] text-ink-faint">
+            <dt className="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-faint sm:pt-[3px]">
               {item.rotulo}
             </dt>
             <dd className="m-0 text-base leading-normal text-ink">
@@ -78,9 +78,9 @@ export default function Instituicao() {
         {diretoria.map((item) => (
           <div
             key={item.cargo}
-            className="grid grid-cols-[minmax(140px,240px)_1fr] gap-5 border-b border-line-soft py-3.5"
+            className="grid gap-1.5 border-b border-line-soft py-3.5 sm:grid-cols-[minmax(140px,240px)_1fr] sm:gap-5"
           >
-            <dt className="pt-[3px] font-mono text-[11px] uppercase tracking-[0.08em] text-ink-faint">
+            <dt className="font-mono text-[11px] uppercase tracking-[0.08em] text-ink-faint sm:pt-[3px]">
               {item.cargo}
             </dt>
             <dd className="m-0 text-base text-ink-muted">{item.nome}</dd>

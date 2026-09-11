@@ -70,13 +70,13 @@ export default function QuemSomos() {
           <div className="mt-9 flex flex-wrap gap-3">
             <Link
               href="/instituicao"
-              className="rounded-[3px] bg-green px-6 py-[13px] text-[15px] font-semibold text-cream no-underline transition-colors hover:bg-green-dark hover:text-cream"
+              className="btn btn-green px-6 py-[13px] text-[15px]"
             >
               Estatuto e diretoria
             </Link>
             <Link
               href="/projetos"
-              className="rounded-[3px] border border-line-strong px-6 py-[13px] text-[15px] font-medium text-ink no-underline transition-colors hover:border-green"
+              className="btn btn-outline px-6 py-[13px] text-[15px]"
             >
               Projetos
             </Link>

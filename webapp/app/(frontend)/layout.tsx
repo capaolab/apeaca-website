@@ -3,7 +3,6 @@ import { Newsreader, Archivo, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { SiteHeader } from "./components/SiteHeader";
 import { SiteFooter } from "./components/SiteFooter";
-import { PrototypeNotice } from "./components/PrototypeNotice";
 
 const newsreader = Newsreader({
   variable: "--font-newsreader",
@@ -45,11 +44,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col bg-cream text-ink">
         <a
           href="#conteudo"
-          className="absolute left-[-9999px] top-0 z-50 bg-green-dark px-4 py-2.5 text-sm text-cream focus:left-2 focus:top-2"
+          className="btn absolute left-[-9999px] top-0 z-50 bg-green-dark px-4 py-2.5 text-sm text-cream focus:left-2 focus:top-2"
         >
           Ir para o conteúdo
         </a>
-        <PrototypeNotice />
         <SiteHeader />
         <main id="conteudo" className="flex-1">
           {children}

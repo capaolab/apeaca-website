@@ -82,13 +82,86 @@ p {
   margin: 0;
 }
 
-a {
-  color: var(--color-green);
-  text-underline-offset: 3px;
+/*
+  Text links use the brand green. We scope this to anchors that are NOT
+  styled as buttons, so filled/CTA buttons keep their own text color on
+  hover (previously `a:hover` overrode a button's light text, making the
+  label blend into its dark background).
+*/
+@layer base {
+  a:not(.btn) {
+    color: var(--color-green);
+    text-underline-offset: 3px;
+  }
+
+  a:not(.btn):hover {
+    color: var(--color-green-dark);
+  }
 }
 
-a:hover {
-  color: var(--color-green-dark);
+/*
+  Shared button styles. `.btn` locks the text color (including on hover)
+  so the global anchor color rules can't wash it out. Works for both
+  <a> and <button> elements.
+*/
+@layer components {
+  .btn {
+    display: inline-block;
+    border-radius: 3px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  /* Solid green button with cream text. */
+  .btn-green,
+  .btn-green:hover {
+    color: var(--color-cream);
+  }
+  .btn-green {
+    background-color: var(--color-green);
+  }
+  .btn-green:hover {
+    background-color: var(--color-green-dark);
+  }
+
+  /* Solid gold button with dark ink text. */
+  .btn-gold,
+  .btn-gold:hover {
+    color: var(--color-ink);
+  }
+  .btn-gold {
+    background-color: var(--color-gold);
+  }
+  .btn-gold:hover {
+    background-color: var(--color-gold-bright);
+  }
+
+  /* Outlined button that sits on a dark surface (cream text). */
+  .btn-outline-light,
+  .btn-outline-light:hover {
+    color: var(--color-cream);
+  }
+  .btn-outline-light {
+    border: 1px solid rgb(250 248 242 / 0.4);
+  }
+  .btn-outline-light:hover {
+    background-color: rgb(250 248 242 / 0.1);
+  }
+
+  /* Outlined button on a light surface (ink text). */
+  .btn-outline,
+  .btn-outline:hover {
+    color: var(--color-ink);
+  }
+  .btn-outline {
+    border: 1px solid var(--color-line-strong);
+    font-weight: 500;
+  }
+  .btn-outline:hover {
+    border-color: var(--color-green);
+  }
 }
 
 :focus-visible {

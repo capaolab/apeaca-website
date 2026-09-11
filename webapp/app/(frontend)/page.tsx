@@ -46,13 +46,13 @@ export default function Home() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/apoie"
-                className="rounded-[3px] bg-gold px-[26px] py-3.5 text-[15px] font-semibold text-ink no-underline transition-colors hover:bg-gold-bright hover:text-ink"
+                className="btn btn-gold px-[26px] py-3.5 text-[15px]"
               >
                 Apoiar a associação
               </Link>
               <Link
                 href="/projetos"
-                className="rounded-[3px] border border-cream/40 px-[26px] py-3.5 text-[15px] font-medium text-cream no-underline transition-colors hover:bg-cream/10 hover:text-cream"
+                className="btn btn-outline-light px-[26px] py-3.5 text-[15px]"
               >
                 Ver os projetos
               </Link>
@@ -255,7 +255,7 @@ export default function Home() {
             </div>
             <Link
               href="/apoie"
-              className="inline-block rounded-[3px] bg-gold px-[26px] py-3.5 text-[15px] font-semibold text-ink no-underline transition-colors hover:bg-gold-bright hover:text-ink"
+              className="btn btn-gold px-[26px] py-3.5 text-[15px]"
             >
               Doar por PIX
             </Link>
