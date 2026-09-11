@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #FAF8F2; color: #171A14; font-family: Archivo, system-ui, sans-serif; -webkit-font-smoothing: antialiased; text-wrap: pretty; }
+a { color: #14683A; text-underline-offset: 3px; }
+a:hover { color: #0C3B21; }
+:focus-visible { outline: 2px solid #14683A; outline-offset: 2px; border-radius: 2px; }
+h1, h2, h3 { margin: 0; font-weight: 500; }
+p { margin: 0; }
+</style>
+</helmet>
+
+<a href="#conteudo" style="position:absolute;left:-9999px;top:0;padding:10px 16px;background:#0C3B21;color:#FAF8F2;font-size:14px;z-index:50" style-focus="left:8px;top:8px">Ir para o conteúdo</a>
+
+<sc-if value="{{ avisoDados }}" hint-placeholder-val="{{ true }}">
+<div style="background:#FAF3E4;border-bottom:1px solid #E8D9B0;padding:8px 20px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#A34A2A;text-transform:uppercase">Protótipo · valores, datas e dados cadastrais são exemplos até a Fase 0</div>
+</sc-if>
+
+<header style="position:sticky;top:0;z-index:40;background:rgba(250,248,242,0.96);backdrop-filter:blur(8px);border-bottom:1px solid #E4DFD1">
+  <div style="max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+    <a href="#/" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#171A14;flex-shrink:0">
+      <img src="assets/apea-ca-logo.jpg" alt="APEA-CA" style="width:40px;height:40px;object-fit:contain;mix-blend-mode:multiply" />
+      <span style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;letter-spacing:0.02em">APEA-CA</span>
+    </a>
+    <nav aria-label="Principal" style="display:flex;gap:2px;flex-wrap:wrap;margin-left:auto;align-items:center">
+      <a href="#/quem-somos" style="padding:8px 11px;font-size:14px;color:#171A14;text-decoration:none;border-radius:3px" style-hover="background:#E3F0E4;color:#0C3B21">Quem somos</a>
+      <a href="#/projetos" style="padding:8px 11px;font-size:14px;color:#171A14;text-decoration:none;border-radius:3px" style-hover="background:#E3F0E4;color:#0C3B21">Projetos</a>
+      <a href="#/instituicao" style="padding:8px 11px;font-size:14px;color:#171A14;text-decoration:none;border-radius:3px" style-hover="background:#E3F0E4;color:#0C3B21">A instituição</a>
+      <a href="#/blog" style="padding:8px 11px;font-size:14px;color:#171A14;text-decoration:none;border-radius:3px" style-hover="background:#E3F0E4;color:#0C3B21">Blog</a>
+      <a href="#/transparencia" style="padding:8px 11px;font-size:14px;color:#171A14;text-decoration:none;border-radius:3px" style-hover="background:#E3F0E4;color:#0C3B21">Transparência</a>
+      <a href="#/apoie" style="padding:8px 16px;margin-left:6px;font-size:14px;font-weight:600;background:#14683A;color:#FAF8F2;text-decoration:none;border-radius:3px" style-hover="background:#0C3B21">Apoie</a>
+      <button onClick="{{ trocarIdioma }}" aria-label="Alternar idioma" style="margin-left:8px;padding:7px 10px;background:none;border:1px solid #D8D2C2;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#4A4B44;cursor:pointer" style-hover="border-color:#14683A;color:#14683A">{{ rotuloIdioma }}</button>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" style="min-height:60vh">
+
+<sc-if value="{{ fallbackEn }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:760px;margin:0 auto;padding:28px 20px 0">
+  <div style="border-left:3px solid #F4C21B;background:#FAF3E4;padding:14px 18px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#A34A2A;text-transform:uppercase;margin-bottom:6px">EN · fallback</div>
+    <p style="font-size:15px;line-height:1.6;color:#3B3D36">This page has no English version yet. Showing the Portuguese original below.</p>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ HOME ============ -->
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div>
+  <section style="background:#0C3B21;color:#FAF8F2;padding:64px 20px 56px">
+    <div style="max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px;align-items:start">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.14em;color:#F4C21B;text-transform:uppercase;margin-bottom:22px">Desde 1996 · Caeté-Açu · Vale do Capão (BA)</div>
+        <h1 style="font-family:Newsreader,Georgia,serif;font-size:clamp(38px,6vw,60px);line-height:1.06;letter-spacing:-0.02em;margin-bottom:24px">Pais, educadores e agricultores de Caeté-Açu</h1>
+        <p style="font-size:18px;line-height:1.62;color:#D6E3D6;max-width:56ch;margin-bottom:32px">Associação civil sem fins lucrativos que atua há três décadas na comunidade de Caeté-Açu, no Vale do Capão. Começou como associação de pais e mestres e hoje responde por infraestrutura de água, espaços de cultura, educação e turismo sustentável em parceria com o poder público e financiadores privados.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#/apoie" style="padding:14px 26px;background:#F4C21B;color:#171A14;font-weight:600;font-size:15px;text-decoration:none;border-radius:3px" style-hover="background:#FFD34F">Apoiar a associação</a>
+          <a href="#/projetos" style="padding:14px 26px;border:1px solid rgba(250,248,242,0.4);color:#FAF8F2;font-weight:500;font-size:15px;text-decoration:none;border-radius:3px" style-hover="background:rgba(250,248,242,0.1)">Ver os projetos</a>
+        </div>
+      </div>
+      <div style="border:1px solid rgba(250,248,242,0.18);padding:26px;background:rgba(250,248,242,0.04)">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#F4C21B;text-transform:uppercase;margin-bottom:18px">Dados para análise de edital</div>
+        <dl style="display:grid;grid-template-columns:1fr;gap:14px;margin:0">
+          <div style="display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid rgba(250,248,242,0.14);padding-bottom:12px">
+            <dt style="font-size:13px;color:#AFC4AF">CNPJ</dt>
+            <dd style="margin:0;font-family:'JetBrains Mono',monospace;font-size:13px;text-align:right">01.234.567/0001-89</dd>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid rgba(250,248,242,0.14);padding-bottom:12px">
+            <dt style="font-size:13px;color:#AFC4AF">Fundação</dt>
+            <dd style="margin:0;font-family:'JetBrains Mono',monospace;font-size:13px;text-align:right">1996</dd>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid rgba(250,248,242,0.14);padding-bottom:12px">
+            <dt style="font-size:13px;color:#AFC4AF">Natureza jurídica</dt>
+            <dd style="margin:0;font-size:13px;text-align:right">Associação privada sem fins lucrativos</dd>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid rgba(250,248,242,0.14);padding-bottom:12px">
+            <dt style="font-size:13px;color:#AFC4AF">Último balanço</dt>
+            <dd style="margin:0;font-family:'JetBrains Mono',monospace;font-size:13px;text-align:right">Exercício 2025</dd>
+          </div>
+          <div style="display:flex;justify-content:space-between;gap:16px">
+            <dt style="font-size:13px;color:#AFC4AF">Território</dt>
+            <dd style="margin:0;font-size:13px;text-align:right">Palmeiras/BA · Chapada Diamantina</dd>
+          </div>
+        </dl>
+        <a href="#/instituicao" style="display:inline-block;margin-top:20px;font-size:14px;color:#F4C21B">Estatuto, diretoria e documentos →</a>
+      </div>
+    </div>
+  </section>
+
+  <div style="background:#E3F0E4;border-bottom:1px solid #C9DFCA;padding:14px 20px">
+    <div style="max-width:1080px;margin:0 auto;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#14683A;text-transform:uppercase">Aviso</span>
+      <span style="font-size:15px;color:#1F3A25">Assembleia geral ordinária em 14/03 na sede, às 9h.</span>
+      <a href="#/blog/convocacao-assembleia-2026" style="font-size:15px;font-weight:600">Ver convocação</a>
+    </div>
+  </div>
+
+  <section style="max-width:1080px;margin:0 auto;padding:72px 20px 0">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:32px">
+      <h2 style="font-family:Newsreader,Georgia,serif;font-size:clamp(28px,4vw,40px);line-height:1.12;letter-spacing:-0.015em">Ações mais atuais</h2>
+      <a href="#/projetos" style="font-size:15px;font-weight:600">Todos os projetos →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+      <sc-for list="{{ destaques }}" as="p" hint-placeholder-count="3">
+        <a href="#/projeto/{{ p.slug }}" style="display:block;text-decoration:none;color:#171A14;border:1px solid #E4DFD1;background:#FFFFFF;padding:24px" style-hover="border-color:#14683A">
+          <div style="display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 8px;background:{{ p.badgeBg }};color:{{ p.badgeInk }}">{{ p.status }}</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6C63">{{ p.periodo }} · {{ p.area }}</span>
+          </div>
+          <h3 style="font-family:Newsreader,Georgia,serif;font-size:23px;line-height:1.2;margin-bottom:10px">{{ p.nome }}</h3>
+          <p style="font-size:15px;line-height:1.6;color:#4A4B44;margin-bottom:16px">{{ p.resumo }}</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6C63;line-height:1.5">{{ p.parceiros }}</div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:1080px;margin:0 auto;padding:72px 20px 0">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:48px">
+      <div>
+        <h2 style="font-family:Newsreader,Georgia,serif;font-size:clamp(28px,4vw,40px);line-height:1.12;letter-spacing:-0.015em;margin-bottom:22px">Trinta anos de atuação documentada</h2>
+        <p style="font-size:17px;line-height:1.65;color:#3B3D36;max-width:60ch;margin-bottom:16px">A APEA-CA nasceu em 1996 como associação de pais e mestres, reunindo famílias que precisavam garantir escola para os filhos numa comunidade rural distante da sede do município. O escopo cresceu com a comunidade: da educação para a agricultura familiar, da agricultura para a infraestrutura básica, e daí para cultura e turismo de base comunitária.</p>
+        <p style="font-size:17px;line-height:1.65;color:#3B3D36;max-width:60ch;margin-bottom:26px">Hoje a associação é reconhecida nos níveis municipal e estadual, ocupa assento em colegiado da Prefeitura de Palmeiras e reúne anciãos da comunidade entre seus associados.</p>
+        <a href="#/quem-somos" style="font-size:15px;font-weight:600">História completa →</a>
+      </div>
+      <div>
+        <ol style="list-style:none;margin:0;padding:0;border-left:1px solid #D8D2C2">
+          <sc-for list="{{ linhaDoTempo }}" as="t" hint-placeholder-count="5">
+            <li style="padding:0 0 26px 22px;position:relative">
+              <span style="position:absolute;left:-4px;top:6px;width:7px;height:7px;border-radius:50%;background:#2E9D4F"></span>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.08em;color:#14683A;margin-bottom:4px">{{ t.ano }}</div>
+              <div style="font-size:16px;line-height:1.45;color:#171A14;margin-bottom:3px">{{ t.titulo }}</div>
+              <div style="font-size:13px;color:#6B6C63">{{ t.parceiro }}</div>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top:72px;background:#FFFFFF;border-top:1px solid #E4DFD1;border-bottom:1px solid #E4DFD1;padding:64px 20px">
+    <div style="max-width:1080px;margin:0 auto">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#14683A;text-transform:uppercase;margin-bottom:14px">Importância local</div>
+      <h2 style="font-family:Newsreader,Georgia,serif;font-size:clamp(26px,3.6vw,36px);line-height:1.15;letter-spacing:-0.015em;margin-bottom:36px;max-width:24ch">O que a associação sustenta no Vale do Capão</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:34px;color:#14683A;margin-bottom:10px">150+</div>
+          <h3 style="font-size:17px;font-weight:600;margin-bottom:8px">Caixas d'água distribuídas</h3>
+          <p style="font-size:15px;line-height:1.6;color:#4A4B44">O sistema de distribuição implantado com a CERB e a prefeitura abastece a Vila e o entorno, e segue em manutenção pela associação.</p>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:34px;color:#14683A;margin-bottom:10px">2</div>
+          <h3 style="font-size:17px;font-weight:600;margin-bottom:8px">Espaços comunitários sob gestão</h3>
+          <p style="font-size:15px;line-height:1.6;color:#4A4B44">A sede própria, construída em 2006, e o espaço Rufino Rocha, cedido pela Prefeitura de Palmeiras em 2019.</p>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:34px;color:#14683A;margin-bottom:10px">1996</div>
+          <h3 style="font-size:17px;font-weight:600;margin-bottom:8px">Interlocução contínua</h3>
+          <p style="font-size:15px;line-height:1.6;color:#4A4B44">Espaço de diálogo entre a comunidade e o poder público desde a fundação, com assento em colegiado municipal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ mostrarCampanha }}" hint-placeholder-val="{{ true }}">
+  <section style="max-width:1080px;margin:0 auto;padding:64px 20px 0">
+    <div style="background:#0C3B21;color:#FAF8F2;padding:36px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px;align-items:center">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#F4C21B;text-transform:uppercase;margin-bottom:14px">Campanha ativa · valores de exemplo</div>
+        <h2 style="font-family:Newsreader,Georgia,serif;font-size:30px;line-height:1.15;margin-bottom:18px">Revitalização do Rufino Rocha</h2>
+        <p style="font-size:16px;line-height:1.6;color:#D6E3D6;max-width:48ch">Recuperação da cobertura, do piso e da instalação elétrica do espaço cedido pela prefeitura, para retomar oficinas e assembleias no local.</p>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:#F4C21B;margin-bottom:8px">R$ 19.000 de R$ 50.000 · 38%</div>
+        <div style="height:8px;background:rgba(250,248,242,0.18);margin-bottom:10px" role="img" aria-label="38 por cento da meta arrecadado">
+          <div style="height:8px;width:38%;background:#F4C21B"></div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#AFC4AF;letter-spacing:0.06em;margin-bottom:22px">Atualizado em 02/09/2026</div>
+        <a href="#/apoie" style="display:inline-block;padding:14px 26px;background:#F4C21B;color:#171A14;font-weight:600;font-size:15px;text-decoration:none;border-radius:3px">Doar por PIX</a>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <section style="max-width:1080px;margin:0 auto;padding:64px 20px 0">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:28px">
+      <h2 style="font-family:Newsreader,Georgia,serif;font-size:clamp(26px,3.6vw,36px);line-height:1.15;letter-spacing:-0.015em">Últimas publicações</h2>
+      <a href="#/blog" style="font-size:15px;font-weight:600">Blog e comunicados →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+      <sc-for list="{{ postsRecentes }}" as="p" hint-placeholder-count="3">
+        <a href="{{ p.href }}" style="display:block;text-decoration:none;color:#171A14;border:1px solid #E4DFD1;background:#FFFFFF;padding:22px" style-hover="border-color:#14683A">
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 7px;background:{{ p.catBg }};color:{{ p.catInk }}">{{ p.categoria }}</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6C63">{{ p.data }}</span>
+          </div>
+          <h3 style="font-family:Newsreader,Georgia,serif;font-size:20px;line-height:1.25;margin-bottom:8px">{{ p.titulo }}</h3>
+          <p style="font-size:14px;line-height:1.55;color:#4A4B44">{{ p.resumo }}</p>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:1080px;margin:0 auto;padding:64px 20px 80px">
+    <div style="border:1px solid #E4DFD1;background:#FFFFFF;padding:32px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:24px">
+        <h2 style="font-family:Newsreader,Georgia,serif;font-size:26px">Prestação de contas</h2>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#A34A2A;text-transform:uppercase">Exercício 2025 · valores de exemplo</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;margin-bottom:24px">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:6px">Receitas</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:22px;color:#171A14">R$ 148.320,00</div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:6px">Despesas</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:22px;color:#171A14">R$ 131.905,44</div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:6px">Saldo</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:22px;color:#14683A">R$ 16.414,56</div>
+        </div>
+      </div>
+      <a href="#/transparencia" style="font-size:15px;font-weight:600">Todos os exercícios e balanços →</a>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<!-- ============ QUEM SOMOS ============ -->
+<sc-if value="{{ isQuemSomos }}" hint-placeholder-val="{{ false }}">
+<div>
+  <div style="max-width:760px;margin:0 auto;padding:56px 20px 0">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:20px">Início › Quem somos</div>
+    <h1 style="font-family:Newsreader,Georgia,serif;font-size:clamp(34px,5.5vw,52px);line-height:1.08;letter-spacing:-0.02em;margin-bottom:26px">Uma associação construída pela própria comunidade</h1>
+    <p style="font-size:19px;line-height:1.6;color:#3B3D36;margin-bottom:40px">A Associação de Pais, Educadores e Agricultores de Caeté-Açu reúne moradores do Vale do Capão, no município de Palmeiras, Bahia, em torno de educação, agricultura familiar, infraestrutura comunitária e cultura.</p>
+  </div>
+  <div style="max-width:680px;margin:0 auto;padding:0 20px 24px">
+    <p style="font-size:17px;line-height:1.65;color:#171A14;margin-bottom:20px">A fundação, em 1996, respondeu a uma necessidade concreta: garantir escola para as crianças de uma comunidade rural distante da sede do município. Pais, professores e agricultores se organizaram formalmente para negociar com o poder público aquilo que a comunidade não conseguia obter individualmente.</p>
+    <p style="font-size:17px;line-height:1.65;color:#171A14;margin-bottom:20px">Nos anos seguintes o escopo se ampliou junto com as demandas locais. A associação passou a articular projetos de infraestrutura — água, sede própria, espaços de uso coletivo — sem abandonar a pauta original de educação. Em 2006 construiu a própria sede com apoio da Natura Cosméticos. Em 2009 recebeu o Centro Digital para a Cidadania, do Governo da Bahia, levando acesso à internet e formação digital para o vale numa época em que isso era raro na Chapada.</p>
+    <p style="font-size:17px;line-height:1.65;color:#171A14;margin-bottom:20px">A partir de 2017, com o programa Bahia Produtiva, a Companhia de Engenharia Hídrica e de Saneamento da Bahia e a Prefeitura de Palmeiras, executou o sistema de distribuição de água da Vila e do entorno, com mais de 150 caixas d'água distribuídas aos sócios. Em 2019 recebeu a cessão de uso do espaço Rufino Rocha, por cinco anos, para atividades culturais e comunitárias.</p>
+    <p style="font-size:17px;line-height:1.65;color:#171A14;margin-bottom:20px">A associação também já arrecadou e prestou contas de recursos de terceiros, em conta exclusiva, no âmbito do Movimento ÉduCapão. Essa experiência de execução e prestação de contas é o que hoje sustenta a captação junto a editais e financiadores.</p>
+    <p style="font-size:17px;line-height:1.65;color:#171A14;margin-bottom:44px">Trinta anos depois, a APEA-CA opera como espaço de diálogo entre a comunidade e o poder público, com reconhecimento municipal e estadual, assento em colegiado da Prefeitura de Palmeiras e anciãos do vale entre seus associados.</p>
+  </div>
+
+  <div style="max-width:1080px;margin:0 auto;padding:0 20px 80px">
+    <div style="border-top:1px solid #E4DFD1;padding-top:44px">
+      <h2 style="font-family:Newsreader,Georgia,serif;font-size:30px;margin-bottom:32px">Linha do tempo</h2>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;gap:0">
+        <sc-for list="{{ linhaDoTempoCompleta }}" as="t" hint-placeholder-count="7">
+          <li style="display:grid;grid-template-columns:minmax(64px,88px) 1fr;gap:24px;padding:20px 0;border-bottom:1px solid #EDE9DE">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:14px;color:#14683A;letter-spacing:0.04em">{{ t.ano }}</div>
+            <div>
+              <div style="font-size:17px;line-height:1.45;margin-bottom:4px">{{ t.titulo }}</div>
+              <div style="font-size:14px;color:#6B6C63">{{ t.parceiro }}</div>
+            </div>
+          </li>
+        </sc-for>
+      </ol>
+      <div style="margin-top:36px;display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#/instituicao" style="padding:13px 24px;background:#14683A;color:#FAF8F2;font-weight:600;font-size:15px;text-decoration:none;border-radius:3px" style-hover="background:#0C3B21">Estatuto e diretoria</a>
+        <a href="#/projetos" style="padding:13px 24px;border:1px solid #D8D2C2;color:#171A14;font-weight:500;font-size:15px;text-decoration:none;border-radius:3px" style-hover="border-color:#14683A">Projetos</a>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ PROJETOS ============ -->
+<sc-if value="{{ isProjetos }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1080px;margin:0 auto;padding:56px 20px 80px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:20px">Início › Projetos</div>
+  <h1 style="font-family:Newsreader,Georgia,serif;font-size:clamp(34px,5.5vw,52px);line-height:1.08;letter-spacing:-0.02em;margin-bottom:22px">Projetos</h1>
+  <p style="font-size:18px;line-height:1.6;color:#3B3D36;max-width:60ch;margin-bottom:36px">Cada projeto reúne período de execução, parceiros, resultados, documentos e a timeline de atualizações publicadas no <a href="#/blog">blog</a>. Projetos em captação têm escopo e orçamento abertos para análise.</p>
+
+  <div role="group" aria-label="Filtrar por status" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid #E4DFD1">
+    <sc-for list="{{ filtros }}" as="f" hint-placeholder-count="4">
+      <button onClick="{{ f.onClick }}" aria-pressed="{{ f.ativo }}" style="padding:9px 16px;border:1px solid {{ f.borda }};background:{{ f.fundo }};color:{{ f.cor }};font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border-radius:3px">{{ f.rotulo }}</button>
+    </sc-for>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+    <sc-for list="{{ projetosFiltrados }}" as="p" hint-placeholder-count="5">
+      <a href="#/projeto/{{ p.slug }}" style="display:block;text-decoration:none;color:#171A14;border:1px solid #E4DFD1;background:#FFFFFF;padding:26px" style-hover="border-color:#14683A">
+        <div style="display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 8px;background:{{ p.badgeBg }};color:{{ p.badgeInk }}">{{ p.status }}</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6C63">{{ p.periodo }} · {{ p.area }}</span>
+        </div>
+        <h2 style="font-family:Newsreader,Georgia,serif;font-size:24px;line-height:1.2;margin-bottom:10px">{{ p.nome }}</h2>
+        <p style="font-size:15px;line-height:1.6;color:#4A4B44;margin-bottom:16px">{{ p.resumo }}</p>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6C63;line-height:1.5">{{ p.parceiros }}</div>
+      </a>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ PROJETO (detalhe) ============ -->
+<sc-if value="{{ isProjeto }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:840px;margin:0 auto;padding:56px 20px 80px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:20px">Início › <a href="#/projetos" style="color:#14683A">Projetos</a> › {{ proj.area }}</div>
+  <div style="display:flex;gap:10px;align-items:center;margin-bottom:18px;flex-wrap:wrap">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 9px;background:{{ proj.badgeBg }};color:{{ proj.badgeInk }}">{{ proj.status }}</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B6C63">{{ proj.periodo }}</span>
+  </div>
+  <h1 style="font-family:Newsreader,Georgia,serif;font-size:clamp(32px,5vw,46px);line-height:1.1;letter-spacing:-0.02em;margin-bottom:22px">{{ proj.nome }}</h1>
+  <p style="font-size:18px;line-height:1.62;color:#3B3D36;margin-bottom:36px">{{ proj.descricao }}</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:20px;padding:26px 0;border-top:1px solid #E4DFD1;border-bottom:1px solid #E4DFD1;margin-bottom:36px">
+    <sc-for list="{{ proj.metricas }}" as="m" hint-placeholder-count="2">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:26px;color:#14683A;margin-bottom:4px">{{ m.valor }}</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#6B6C63;text-transform:uppercase">{{ m.rotulo }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:24px;margin-bottom:16px">Parceiros e financiadores</h2>
+  <p style="font-size:16px;line-height:1.6;color:#171A14;margin-bottom:40px">{{ proj.parceiros }}</p>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:24px;margin-bottom:6px">Atualizações do projeto</h2>
+  <p style="font-size:15px;line-height:1.6;color:#6B6C63;margin-bottom:26px">Publicações do blog vinculadas a este projeto, da mais recente para a mais antiga.</p>
+  <sc-if value="{{ temAtualizacoes }}" hint-placeholder-val="{{ true }}">
+  <ol style="list-style:none;margin:0 0 40px;padding:0;border-left:1px solid #D8D2C2">
+    <sc-for list="{{ atualizacoes }}" as="u" hint-placeholder-count="2">
+      <li style="position:relative;padding:0 0 28px 26px">
+        <span style="position:absolute;left:-5px;top:8px;width:9px;height:9px;border-radius:50%;background:#2E9D4F;border:2px solid #FAF8F2"></span>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.06em;color:#14683A">{{ u.data }}</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 7px;background:{{ u.catBg }};color:{{ u.catInk }}">{{ u.categoria }}</span>
+        </div>
+        <a href="{{ u.href }}" style="display:block;text-decoration:none;color:#171A14" style-hover="color:#14683A">
+          <h3 style="font-family:Newsreader,Georgia,serif;font-size:21px;line-height:1.25;margin-bottom:8px">{{ u.titulo }}</h3>
+        </a>
+        <p style="font-size:15px;line-height:1.6;color:#4A4B44;max-width:56ch">{{ u.resumo }}</p>
+      </li>
+    </sc-for>
+  </ol>
+  </sc-if>
+  <sc-if value="{{ semAtualizacoes }}" hint-placeholder-val="{{ false }}">
+  <div style="border:1px dashed #D8D2C2;background:#FFFFFF;padding:28px;margin-bottom:40px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#A34A2A;text-transform:uppercase;margin-bottom:10px">Estado vazio</div>
+    <h3 style="font-size:18px;font-weight:600;margin-bottom:8px">Nenhuma atualização publicada ainda</h3>
+    <p style="font-size:15px;line-height:1.6;color:#4A4B44;max-width:52ch">Notícias de andamento, comunicados e artigos vinculados a este projeto aparecem aqui em ordem cronológica.</p>
+  </div>
+  </sc-if>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:24px;margin-bottom:18px">Documentos do projeto</h2>
+  <div style="border:1px dashed #D8D2C2;background:#FFFFFF;padding:28px;margin-bottom:40px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#A34A2A;text-transform:uppercase;margin-bottom:10px">Estado vazio</div>
+    <h3 style="font-size:18px;font-weight:600;margin-bottom:8px">Nenhum documento publicado ainda</h3>
+    <p style="font-size:15px;line-height:1.6;color:#4A4B44;max-width:52ch">Convênios, relatórios de execução e fotos autorizadas deste projeto serão publicados aqui, cada arquivo com resumo em HTML e tamanho declarado. Para solicitar um documento antes disso, fale com a secretaria.</p>
+  </div>
+
+  <div style="display:flex;gap:12px;flex-wrap:wrap">
+    <a href="#/apoie" style="padding:13px 24px;background:#14683A;color:#FAF8F2;font-weight:600;font-size:15px;text-decoration:none;border-radius:3px" style-hover="background:#0C3B21">Apoiar este projeto</a>
+    <a href="#/projetos" style="padding:13px 24px;border:1px solid #D8D2C2;color:#171A14;font-weight:500;font-size:15px;text-decoration:none;border-radius:3px" style-hover="border-color:#14683A">Voltar aos projetos</a>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ BLOG ============ -->
+<sc-if value="{{ isBlog }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1080px;margin:0 auto;padding:56px 20px 80px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:20px">Início › Blog</div>
+  <h1 style="font-family:Newsreader,Georgia,serif;font-size:clamp(34px,5.5vw,52px);line-height:1.08;letter-spacing:-0.02em;margin-bottom:22px">Blog e comunicados</h1>
+  <p style="font-size:18px;line-height:1.6;color:#3B3D36;max-width:60ch;margin-bottom:36px">Canal de rotina da associação: notícias de andamento, comunicados oficiais, artigos e convocações de assembleia. Projetos são uma categoria à parte, com interface própria.</p>
+
+  <div role="group" aria-label="Filtrar por categoria" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid #E4DFD1">
+    <sc-for list="{{ categorias }}" as="c" hint-placeholder-count="6">
+      <button onClick="{{ c.onClick }}" aria-pressed="{{ c.ativo }}" style="padding:9px 16px;border:1px solid {{ c.borda }};background:{{ c.fundo }};color:{{ c.cor }};font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;border-radius:3px">{{ c.rotulo }}</button>
+    </sc-for>
+  </div>
+
+  <sc-if value="{{ catProjetos }}" hint-placeholder-val="{{ false }}">
+  <div>
+    <div style="border-left:3px solid #2E9D4F;background:#E3F0E4;padding:20px;margin-bottom:28px">
+      <p style="font-size:15px;line-height:1.6;color:#1F3A25;max-width:60ch">Projetos não são posts: cada um tem página própria com período, parceiros, resultados, documentos e a timeline de atualizações publicadas no blog.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px">
+      <sc-for list="{{ projetos }}" as="p" hint-placeholder-count="5">
+        <a href="#/projeto/{{ p.slug }}" style="display:block;text-decoration:none;color:#171A14;border:1px solid #E4DFD1;background:#FFFFFF;padding:26px" style-hover="border-color:#14683A">
+          <div style="display:flex;gap:10px;align-items:center;margin-bottom:16px;flex-wrap:wrap">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 8px;background:{{ p.badgeBg }};color:{{ p.badgeInk }}">{{ p.status }}</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6C63">{{ p.periodo }} · {{ p.area }}</span>
+          </div>
+          <h2 style="font-family:Newsreader,Georgia,serif;font-size:24px;line-height:1.2;margin-bottom:10px">{{ p.nome }}</h2>
+          <p style="font-size:15px;line-height:1.6;color:#4A4B44">{{ p.resumo }}</p>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ catPosts }}" hint-placeholder-val="{{ true }}">
+  <div style="display:grid;gap:0;border-top:1px solid #E4DFD1">
+    <sc-for list="{{ postsFiltrados }}" as="p" hint-placeholder-count="6">
+      <a href="{{ p.href }}" style="display:grid;grid-template-columns:minmax(0,1fr);gap:10px;padding:26px 0;border-bottom:1px solid #EDE9DE;text-decoration:none;color:#171A14" style-hover="background:#FFFFFF">
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:4px 8px;background:{{ p.catBg }};color:{{ p.catInk }}">{{ p.categoria }}</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6C63">{{ p.data }} · {{ p.autor }}</span>
+        </div>
+        <h2 style="font-family:Newsreader,Georgia,serif;font-size:26px;line-height:1.2;max-width:34ch">{{ p.titulo }}</h2>
+        <p style="font-size:16px;line-height:1.6;color:#4A4B44;max-width:66ch">{{ p.resumo }}</p>
+        <sc-if value="{{ p.temProjeto }}" hint-placeholder-val="{{ false }}">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#14683A">Projeto: {{ p.projetoNome }}</div>
+        </sc-if>
+      </a>
+    </sc-for>
+  </div>
+  </sc-if>
+</div>
+</sc-if>
+
+<!-- ============ POST ============ -->
+<sc-if value="{{ isPost }}" hint-placeholder-val="{{ false }}">
+<div>
+  <div style="max-width:700px;margin:0 auto;padding:56px 20px 0">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:22px">Início › <a href="#/blog" style="color:#14683A">Blog</a> › {{ post.categoria }}</div>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:20px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 9px;background:{{ post.catBg }};color:{{ post.catInk }}">{{ post.categoria }}</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B6C63">{{ post.data }} · {{ post.autor }}</span>
+    </div>
+    <h1 style="font-family:Newsreader,Georgia,serif;font-size:clamp(30px,4.8vw,44px);line-height:1.12;letter-spacing:-0.02em;margin-bottom:22px">{{ post.titulo }}</h1>
+    <p style="font-size:19px;line-height:1.6;color:#3B3D36;margin-bottom:36px;padding-bottom:32px;border-bottom:1px solid #E4DFD1">{{ post.resumo }}</p>
+    <div style="display:grid;gap:22px;margin-bottom:40px">
+      <sc-for list="{{ post.corpo }}" as="par" hint-placeholder-count="3">
+        <p style="font-size:17px;line-height:1.65;color:#171A14">{{ par.t }}</p>
+      </sc-for>
+    </div>
+    <sc-if value="{{ post.temProjeto }}" hint-placeholder-val="{{ false }}">
+      <div style="border-left:3px solid #2E9D4F;background:#E3F0E4;padding:22px;margin-bottom:40px">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#14683A;text-transform:uppercase;margin-bottom:8px">Atualização de projeto</div>
+        <p style="font-size:16px;line-height:1.6;color:#1F3A25;margin-bottom:12px">Este post integra a timeline do projeto {{ post.projetoNome }}.</p>
+        <a href="#/projeto/{{ post.projeto }}" style="font-size:15px;font-weight:600">Ver o projeto e todas as atualizações →</a>
+      </div>
+    </sc-if>
+  </div>
+  <div style="max-width:1080px;margin:0 auto;padding:0 20px 80px">
+    <div style="border-top:1px solid #E4DFD1;padding-top:40px">
+      <h2 style="font-family:Newsreader,Georgia,serif;font-size:26px;margin-bottom:24px">Publicações recentes</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+        <sc-for list="{{ postsRecentes }}" as="p" hint-placeholder-count="3">
+          <a href="{{ p.href }}" style="display:block;text-decoration:none;color:#171A14;border:1px solid #E4DFD1;background:#FFFFFF;padding:22px" style-hover="border-color:#14683A">
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;padding:3px 7px;background:{{ p.catBg }};color:{{ p.catInk }}">{{ p.categoria }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6C63">{{ p.data }}</span>
+            </div>
+            <h3 style="font-family:Newsreader,Georgia,serif;font-size:20px;line-height:1.25">{{ p.titulo }}</h3>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ APOIE ============ -->
+<sc-if value="{{ isApoie }}" hint-placeholder-val="{{ false }}">
+<div>
+  <section style="background:#0C3B21;color:#FAF8F2;padding:56px 20px">
+    <div style="max-width:840px;margin:0 auto">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#F4C21B;text-transform:uppercase;margin-bottom:20px">Início › Apoie</div>
+      <h1 style="font-family:Newsreader,Georgia,serif;font-size:clamp(34px,5.5vw,52px);line-height:1.08;letter-spacing:-0.02em;margin-bottom:22px">Apoie a APEA-CA</h1>
+      <p style="font-size:18px;line-height:1.62;color:#D6E3D6;max-width:56ch">Duas formas diretas de sustentar o trabalho: doação por PIX, para quem quer contribuir uma vez ou de tempos em tempos, e associação, para quem quer participar das decisões. Todo recurso recebido entra na prestação de contas do exercício.</p>
+    </div>
+  </section>
+
+  <div style="max-width:840px;margin:0 auto;padding:56px 20px 0;display:grid;gap:24px">
+    <div style="border:1px solid #E4DFD1;background:#FFFFFF;padding:32px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#14683A;text-transform:uppercase;margin-bottom:14px">01 · Doação por PIX</div>
+      <h2 style="font-family:Newsreader,Georgia,serif;font-size:28px;margin-bottom:14px">Doar qualquer valor</h2>
+      <p style="font-size:16px;line-height:1.62;color:#3B3D36;max-width:56ch;margin-bottom:24px">A chave PIX é o CNPJ da associação. A conta é de titularidade da APEA-CA e a movimentação aparece no balanço do exercício.</p>
+      <div style="background:#FAF8F2;border:1px solid #E4DFD1;padding:20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:18px">
+        <div style="flex:1;min-width:200px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:6px">Chave PIX · CNPJ</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:19px;color:#171A14;word-break:break-all">01.234.567/0001-89</div>
+        </div>
+        <button onClick="{{ copiarPix }}" style="padding:13px 22px;background:#14683A;color:#FAF8F2;border:none;font-family:Archivo,sans-serif;font-weight:600;font-size:15px;cursor:pointer;border-radius:3px" style-hover="background:#0C3B21">{{ rotuloCopiar }}</button>
+      </div>
+      <p style="font-size:14px;line-height:1.6;color:#6B6C63">Para receber recibo de doação, envie o comprovante e seus dados para a tesouraria pela <a href="#/contato">página de contato</a>. Recibos são emitidos em até 15 dias.</p>
+    </div>
+
+    <div style="border:1px solid #E4DFD1;background:#FFFFFF;padding:32px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#14683A;text-transform:uppercase;margin-bottom:14px">02 · Quadro de associados</div>
+      <h2 style="font-family:Newsreader,Georgia,serif;font-size:28px;margin-bottom:14px">Torne-se associado</h2>
+      <p style="font-size:16px;line-height:1.62;color:#3B3D36;max-width:56ch;margin-bottom:26px">Associado tem voz e voto em assembleia, acesso aos documentos internos e prioridade nos programas comunitários — como a distribuição de caixas d'água aos sócios. A contribuição mensal é o que mantém a associação funcionando entre um projeto e outro.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:26px">
+        <div style="border:1px solid #E4DFD1;padding:20px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:8px">Morador</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#171A14;margin-bottom:6px">R$ 20/mês</div>
+          <div style="font-size:14px;color:#4A4B44;line-height:1.5">Residentes de Caeté-Açu e entorno</div>
+        </div>
+        <div style="border:1px solid #E4DFD1;padding:20px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:8px">Apoiador</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#171A14;margin-bottom:6px">R$ 50/mês</div>
+          <div style="font-size:14px;color:#4A4B44;line-height:1.5">Quem apoia de fora da comunidade</div>
+        </div>
+        <div style="border:1px solid #E4DFD1;padding:20px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:8px">Institucional</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:24px;color:#171A14;margin-bottom:6px">A combinar</div>
+          <div style="font-size:14px;color:#4A4B44;line-height:1.5">Empresas e organizações parceiras</div>
+        </div>
+      </div>
+      <form onSubmit="{{ enviarForm }}" style="border-top:1px solid #EDE9DE;padding-top:26px;display:grid;gap:16px;max-width:440px">
+        <div>
+          <label for="nome-assoc" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">Nome completo</label>
+          <input id="nome-assoc" type="text" required="true" placeholder="Como consta no documento" style="width:100%;padding:12px 14px;border:1px solid #D8D2C2;background:#FAF8F2;font-family:Archivo,sans-serif;font-size:15px;border-radius:3px" />
+        </div>
+        <div>
+          <label for="email-assoc" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">E-mail</label>
+          <input id="email-assoc" type="email" required="true" placeholder="nome@exemplo.com" style="width:100%;padding:12px 14px;border:1px solid #D8D2C2;background:#FAF8F2;font-family:Archivo,sans-serif;font-size:15px;border-radius:3px" />
+          <div style="font-size:13px;color:#6B6C63;margin-top:7px">Usado só para responder ao pedido de associação. Ver a <a href="#/privacidade">política de privacidade</a>.</div>
+        </div>
+        <button type="submit" style="justify-self:start;padding:14px 26px;background:#14683A;color:#FAF8F2;border:none;font-family:Archivo,sans-serif;font-weight:600;font-size:15px;cursor:pointer;border-radius:3px" style-hover="background:#0C3B21">{{ rotuloEnvio }}</button>
+      </form>
+    </div>
+
+    <div style="border-left:3px solid #2E9D4F;background:#E3F0E4;padding:26px">
+      <h2 style="font-family:Newsreader,Georgia,serif;font-size:22px;margin-bottom:10px">Antes de doar, confira as contas</h2>
+      <p style="font-size:16px;line-height:1.6;color:#1F3A25;max-width:56ch;margin-bottom:16px">A associação publica receitas, despesas, saldo e o balanço aprovado em assembleia de cada exercício. Nenhum número é publicado sem o documento que o sustenta.</p>
+      <a href="#/transparencia" style="font-size:15px;font-weight:600">Ver prestação de contas →</a>
+    </div>
+  </div>
+  <div style="height:80px"></div>
+</div>
+</sc-if>
+
+<!-- ============ A INSTITUIÇÃO ============ -->
+<sc-if value="{{ isInstituicao }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:900px;margin:0 auto;padding:56px 20px 80px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:20px">Início › A instituição</div>
+  <h1 style="font-family:Newsreader,Georgia,serif;font-size:clamp(34px,5.5vw,52px);line-height:1.08;letter-spacing:-0.02em;margin-bottom:22px">A instituição</h1>
+  <p style="font-size:18px;line-height:1.6;color:#3B3D36;max-width:60ch;margin-bottom:44px">Dados cadastrais, regras de funcionamento, valores e documentos de governança da APEA-CA, reunidos para consulta de associados, órgãos públicos e financiadores.</p>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:28px;margin-bottom:20px">Dados cadastrais</h2>
+  <dl style="margin:0 0 48px;border-top:1px solid #E4DFD1">
+    <sc-for list="{{ cadastro }}" as="c" hint-placeholder-count="7">
+      <div style="display:grid;grid-template-columns:minmax(140px,240px) 1fr;gap:20px;padding:16px 0;border-bottom:1px solid #EDE9DE">
+        <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#6B6C63;text-transform:uppercase;padding-top:3px">{{ c.rotulo }}</dt>
+        <dd style="margin:0;font-size:16px;line-height:1.5;color:#171A14">{{ c.valor }}</dd>
+      </div>
+    </sc-for>
+  </dl>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:28px;margin-bottom:16px">Missão e valores</h2>
+  <p style="font-size:17px;line-height:1.65;color:#171A14;max-width:60ch;margin-bottom:26px">Organizar os moradores de Caeté-Açu para conquistar e manter os bens comuns da comunidade — escola, água, espaços de cultura e condições para a agricultura familiar — respeitando a autonomia dos associados e o modo de vida do Vale do Capão.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-bottom:48px">
+    <div style="border-top:2px solid #2E9D4F;padding-top:16px">
+      <h3 style="font-size:17px;font-weight:600;margin-bottom:8px">Decisão em assembleia</h3>
+      <p style="font-size:15px;line-height:1.6;color:#4A4B44">Nenhuma despesa relevante ou convênio é firmado sem deliberação do quadro de associados.</p>
+    </div>
+    <div style="border-top:2px solid #2E9D4F;padding-top:16px">
+      <h3 style="font-size:17px;font-weight:600;margin-bottom:8px">Conta prestada</h3>
+      <p style="font-size:15px;line-height:1.6;color:#4A4B44">Recurso de terceiro entra em conta específica e sai com balanço aprovado e publicado.</p>
+    </div>
+    <div style="border-top:2px solid #2E9D4F;padding-top:16px">
+      <h3 style="font-size:17px;font-weight:600;margin-bottom:8px">Memória da comunidade</h3>
+      <p style="font-size:15px;line-height:1.6;color:#4A4B44">Anciãos do vale integram o quadro social e são ouvidos nas decisões sobre território e tradição.</p>
+    </div>
+  </div>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:28px;margin-bottom:8px">Diretoria</h2>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#A34A2A;text-transform:uppercase;margin-bottom:20px">Gestão 2025–2027 · nomes a confirmar pela secretaria</p>
+  <dl style="margin:0 0 48px;border-top:1px solid #E4DFD1">
+    <sc-for list="{{ diretoria }}" as="d" hint-placeholder-count="5">
+      <div style="display:grid;grid-template-columns:minmax(140px,240px) 1fr;gap:20px;padding:14px 0;border-bottom:1px solid #EDE9DE">
+        <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#6B6C63;text-transform:uppercase;padding-top:3px">{{ d.cargo }}</dt>
+        <dd style="margin:0;font-size:16px;color:#4A4B44">{{ d.nome }}</dd>
+      </div>
+    </sc-for>
+  </dl>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:28px;margin-bottom:20px">Estatuto e documentos</h2>
+  <div style="border-top:1px solid #E4DFD1;margin-bottom:20px">
+    <sc-for list="{{ documentos }}" as="doc" hint-placeholder-count="4">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;padding:18px 0;border-bottom:1px solid #EDE9DE">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;color:#14683A;text-transform:uppercase;margin-bottom:6px">{{ doc.tipo }}</div>
+          <div style="font-size:17px;line-height:1.4;margin-bottom:4px">{{ doc.titulo }}</div>
+          <div style="font-size:14px;color:#6B6C63;line-height:1.5">{{ doc.resumo }}</div>
+        </div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#6B6C63;white-space:nowrap">{{ doc.peso }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <p style="font-size:14px;line-height:1.6;color:#6B6C63;max-width:60ch;margin-bottom:44px">Todo PDF publicado no portal traz resumo em HTML e tamanho de arquivo declarado, para que quem acessa por conexão limitada saiba o custo antes de baixar.</p>
+
+  <div style="border:1px dashed #D8D2C2;background:#FFFFFF;padding:28px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#A34A2A;text-transform:uppercase;margin-bottom:10px">Estado vazio</div>
+    <h3 style="font-size:18px;font-weight:600;margin-bottom:8px">Arquivos ainda não anexados</h3>
+    <p style="font-size:15px;line-height:1.6;color:#4A4B44;max-width:52ch">Os documentos acima estão listados com metadados de exemplo. Assim que a secretaria enviar os arquivos vigentes — estatuto registrado, ata de eleição, regimento — eles passam a ser baixáveis aqui.</p>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ TRANSPARÊNCIA ============ -->
+<sc-if value="{{ isTransparencia }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:840px;margin:0 auto;padding:56px 20px 80px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:20px">Início › Transparência › {{ ano }}</div>
+  <h1 style="font-family:Newsreader,Georgia,serif;font-size:clamp(34px,5.5vw,52px);line-height:1.08;letter-spacing:-0.02em;margin-bottom:22px">Transparência</h1>
+  <p style="font-size:18px;line-height:1.6;color:#3B3D36;max-width:60ch;margin-bottom:36px">Um exercício por página: receitas, despesas, saldo, balanço completo em PDF e data de aprovação em assembleia. Número sem documento não é publicado.</p>
+
+  <div role="group" aria-label="Escolher exercício" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px">
+    <sc-for list="{{ anos }}" as="a" hint-placeholder-count="3">
+      <button onClick="{{ a.onClick }}" aria-pressed="{{ a.ativo }}" style="padding:10px 20px;border:1px solid {{ a.borda }};background:{{ a.fundo }};color:{{ a.cor }};font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.06em;cursor:pointer;border-radius:3px">{{ a.rotulo }}</button>
+    </sc-for>
+  </div>
+
+  <div style="border:1px solid #E4DFD1;background:#FFFFFF;padding:32px;margin-bottom:24px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:28px">
+      <h2 style="font-family:Newsreader,Georgia,serif;font-size:26px">Exercício {{ exercicio.ano }}</h2>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#A34A2A;text-transform:uppercase">Valores de exemplo</span>
+    </div>
+    <dl style="margin:0 0 28px;border-top:1px solid #EDE9DE">
+      <div style="display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid #EDE9DE">
+        <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase">Receitas</dt>
+        <dd style="margin:0;font-family:'JetBrains Mono',monospace;font-size:18px">R$ {{ exercicio.receitas }}</dd>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid #EDE9DE">
+        <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase">Despesas</dt>
+        <dd style="margin:0;font-family:'JetBrains Mono',monospace;font-size:18px">R$ {{ exercicio.despesas }}</dd>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid #EDE9DE">
+        <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase">Saldo</dt>
+        <dd style="margin:0;font-family:'JetBrains Mono',monospace;font-size:18px;color:#14683A">R$ {{ exercicio.saldo }}</dd>
+      </div>
+      <div style="display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid #EDE9DE">
+        <dt style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase">Aprovado em assembleia</dt>
+        <dd style="margin:0;font-family:'JetBrains Mono',monospace;font-size:18px">{{ exercicio.aprovado }}</dd>
+      </div>
+    </dl>
+    <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+      <span style="font-size:16px;font-weight:600;color:#14683A">Balanço completo</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6B6C63">PDF · {{ exercicio.peso }}</span>
+    </div>
+  </div>
+
+  <div style="border:1px dashed #D8D2C2;background:#FFFFFF;padding:28px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#A34A2A;text-transform:uppercase;margin-bottom:10px">Exercícios anteriores a 2023</div>
+    <h3 style="font-size:18px;font-weight:600;margin-bottom:8px">Nenhuma prestação de contas publicada ainda</h3>
+    <p style="font-size:15px;line-height:1.6;color:#4A4B44;max-width:52ch">Os balanços aprovados em assembleia são publicados aqui com o PDF anexado. Para pedir um documento anterior, fale com a tesouraria pela <a href="#/contato">página de contato</a>.</p>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ CONTATO ============ -->
+<sc-if value="{{ isContato }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:840px;margin:0 auto;padding:56px 20px 80px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:20px">Início › Contato</div>
+  <h1 style="font-family:Newsreader,Georgia,serif;font-size:clamp(34px,5.5vw,52px);line-height:1.08;letter-spacing:-0.02em;margin-bottom:22px">Contato</h1>
+  <p style="font-size:18px;line-height:1.6;color:#3B3D36;max-width:60ch;margin-bottom:40px">A sede fica na Vila de Caeté-Açu. O atendimento presencial acontece nos dias de reunião; para o resto, e-mail é o canal mais confiável — a conexão no vale é intermitente.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;margin-bottom:48px">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:10px">Endereço da sede</div>
+      <p style="font-size:16px;line-height:1.6">Vila de Caeté-Açu<br />Palmeiras · Bahia · CEP 46840-000</p>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:10px">E-mail</div>
+      <p style="font-size:16px;line-height:1.6"><a href="mailto:contato@apeaca.org.br">contato@apeaca.org.br</a><br /><span style="font-size:14px;color:#6B6C63">Endereço de exemplo</span></p>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:10px">Telefone e WhatsApp</div>
+      <p style="font-size:16px;line-height:1.6">(75) 90000-0000<br /><span style="font-size:14px;color:#6B6C63">Número de exemplo</span></p>
+    </div>
+  </div>
+  <div style="border:1px solid #E4DFD1;background:#FFFFFF;padding:32px">
+    <h2 style="font-family:Newsreader,Georgia,serif;font-size:26px;margin-bottom:20px">Enviar mensagem</h2>
+    <form onSubmit="{{ enviarForm }}" style="display:grid;gap:16px;max-width:460px">
+      <div>
+        <label for="c-nome" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">Nome</label>
+        <input id="c-nome" type="text" required="true" style="width:100%;padding:12px 14px;border:1px solid #D8D2C2;background:#FAF8F2;font-family:Archivo,sans-serif;font-size:15px;border-radius:3px" />
+      </div>
+      <div>
+        <label for="c-email" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">E-mail</label>
+        <input id="c-email" type="email" required="true" placeholder="nome@exemplo.com" style="width:100%;padding:12px 14px;border:1px solid #D8D2C2;background:#FAF8F2;font-family:Archivo,sans-serif;font-size:15px;border-radius:3px" />
+      </div>
+      <div>
+        <label for="c-msg" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">Mensagem</label>
+        <textarea id="c-msg" rows="5" required="true" style="width:100%;padding:12px 14px;border:1px solid #D8D2C2;background:#FAF8F2;font-family:Archivo,sans-serif;font-size:15px;border-radius:3px;resize:vertical"></textarea>
+      </div>
+      <button type="submit" style="justify-self:start;padding:14px 26px;background:#14683A;color:#FAF8F2;border:none;font-family:Archivo,sans-serif;font-weight:600;font-size:15px;cursor:pointer;border-radius:3px" style-hover="background:#0C3B21">{{ rotuloEnvio }}</button>
+    </form>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ PRIVACIDADE ============ -->
+<sc-if value="{{ isPrivacidade }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:700px;margin:0 auto;padding:56px 20px 80px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:20px">Início › Privacidade</div>
+  <h1 style="font-family:Newsreader,Georgia,serif;font-size:clamp(32px,5vw,46px);line-height:1.1;letter-spacing:-0.02em;margin-bottom:14px">Política de privacidade</h1>
+  <p style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#6B6C63;text-transform:uppercase;margin-bottom:36px">Versão 1 · setembro de 2026 · minuta para revisão jurídica</p>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:24px;margin-bottom:12px">Quem trata os dados</h2>
+  <p style="font-size:17px;line-height:1.65;margin-bottom:28px">A APEA-CA — Associação de Pais, Educadores e Agricultores de Caeté-Açu, CNPJ 01.234.567/0001-89, com sede na Vila de Caeté-Açu, Palmeiras/BA — é a controladora dos dados pessoais coletados neste portal, nos termos da Lei 13.709/2018 (LGPD).</p>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:24px;margin-bottom:12px">Quais dados coletamos</h2>
+  <p style="font-size:17px;line-height:1.65;margin-bottom:16px">Somente o que você digita nos formulários de contato e de pedido de associação: nome, e-mail e a mensagem enviada. Se você doar por PIX e solicitar recibo, a tesouraria também trata o comprovante e os dados fiscais necessários para emiti-lo.</p>
+  <p style="font-size:17px;line-height:1.65;margin-bottom:28px">O portal não usa cookies de identificação, não integra redes de publicidade e não faz perfilamento de visitantes.</p>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:24px;margin-bottom:12px">Para que usamos</h2>
+  <p style="font-size:17px;line-height:1.65;margin-bottom:28px">Responder ao seu contato, processar o pedido de associação, emitir recibo de doação e cumprir obrigações legais e contábeis da associação. Não vendemos, alugamos nem cedemos dados pessoais a terceiros para fins comerciais.</p>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:24px;margin-bottom:12px">Por quanto tempo guardamos</h2>
+  <p style="font-size:17px;line-height:1.65;margin-bottom:28px">Mensagens de contato ficam armazenadas por até 24 meses. Dados de associados são mantidos enquanto durar o vínculo e, depois, pelo prazo exigido pela legislação contábil e fiscal.</p>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:24px;margin-bottom:12px">Seus direitos</h2>
+  <p style="font-size:17px;line-height:1.65;margin-bottom:28px">Você pode pedir confirmação de tratamento, acesso, correção, anonimização, portabilidade ou eliminação dos seus dados, além de revogar consentimento. O pedido pode ser feito pela <a href="#/contato">página de contato</a> e é respondido em até 15 dias.</p>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:24px;margin-bottom:12px">Medição de audiência</h2>
+  <p style="font-size:17px;line-height:1.65;margin-bottom:28px">Caso a associação passe a medir acessos, usará ferramenta sem cookie de identificação e sem compartilhamento com terceiros, e esta política será atualizada com a data da mudança.</p>
+
+  <div style="border-left:3px solid #F4C21B;background:#FAF3E4;padding:20px">
+    <p style="font-size:15px;line-height:1.6;color:#5A4520">Este texto é uma minuta escrita para a estrutura do portal. Antes de publicar, precisa de revisão por quem responde juridicamente pela associação, com os dados cadastrais reais e o encarregado de dados nomeado.</p>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ MAPA DO SITE E ACESSIBILIDADE ============ -->
+<sc-if value="{{ isMapa }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:840px;margin:0 auto;padding:56px 20px 80px">
+  <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#6B6C63;text-transform:uppercase;margin-bottom:20px">Início › Mapa do site</div>
+  <h1 style="font-family:Newsreader,Georgia,serif;font-size:clamp(32px,5vw,46px);line-height:1.1;letter-spacing:-0.02em;margin-bottom:36px">Mapa do site e acessibilidade</h1>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:26px;margin-bottom:20px">Todas as páginas</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;margin-bottom:48px;padding-bottom:44px;border-bottom:1px solid #E4DFD1">
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#14683A;text-transform:uppercase;margin-bottom:12px">Institucional</div>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:16px">
+        <li><a href="#/">Início</a></li>
+        <li><a href="#/quem-somos">Quem somos</a></li>
+        <li><a href="#/instituicao">A instituição</a></li>
+        <li><a href="#/contato">Contato</a></li>
+      </ul>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#14683A;text-transform:uppercase;margin-bottom:12px">Projetos</div>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:16px">
+        <li><a href="#/projetos">Todos os projetos</a></li>
+        <sc-for list="{{ projetos }}" as="p" hint-placeholder-count="5">
+          <li><a href="#/projeto/{{ p.slug }}">{{ p.nome }}</a></li>
+        </sc-for>
+      </ul>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#14683A;text-transform:uppercase;margin-bottom:12px">Blog</div>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:16px">
+        <li><a href="#/blog">Todas as publicações</a></li>
+        <sc-for list="{{ posts }}" as="p" hint-placeholder-count="7">
+          <li><a href="{{ p.href }}">{{ p.titulo }}</a></li>
+        </sc-for>
+      </ul>
+    </div>
+    <div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#14683A;text-transform:uppercase;margin-bottom:12px">Recursos e contas</div>
+      <ul style="list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:16px">
+        <li><a href="#/apoie">Apoie</a></li>
+        <li><a href="#/transparencia">Transparência</a></li>
+        <li><a href="#/privacidade">Política de privacidade</a></li>
+        <li><a href="#/mapa-do-site">Mapa do site</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 style="font-family:Newsreader,Georgia,serif;font-size:26px;margin-bottom:16px">Declaração de acessibilidade</h2>
+  <p style="font-size:17px;line-height:1.65;max-width:60ch;margin-bottom:24px">Este portal é desenvolvido para atender à WCAG 2.2 nível AA, adotando também as recomendações do eMAG que são aplicáveis a uma organização da sociedade civil. O compromisso é de critério de aceite, não de intenção: a verificação automatizada roda a cada alteração e a navegação por teclado é testada manualmente.</p>
+  <ul style="margin:0 0 28px;padding-left:22px;display:grid;gap:10px;font-size:16px;line-height:1.6;color:#171A14">
+    <li>Contraste mínimo de 4,5:1 para texto corrido e 3:1 para títulos.</li>
+    <li>Foco visível de 2px com deslocamento de 2px em todo elemento interativo.</li>
+    <li>Atalho para o conteúdo principal como primeiro elemento focável da página.</li>
+    <li>Nenhuma informação transmitida apenas por cor.</li>
+    <li>Imagem não é publicada sem texto alternativo; PDF não é publicado sem resumo em HTML e tamanho declarado.</li>
+    <li>Estrutura de títulos hierárquica e marcos de navegação identificados.</li>
+  </ul>
+  <p style="font-size:16px;line-height:1.65;max-width:60ch">Encontrou uma barreira de acesso? Descreva o problema pela <a href="#/contato">página de contato</a>. Barreiras relatadas entram na fila de correção com prioridade sobre novas funcionalidades.</p>
+</div>
+</sc-if>
+
+</main>
+
+<footer style="background:#0C3B21;color:#D6E3D6;padding:56px 20px 32px;margin-top:0">
+  <div style="max-width:1080px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:36px;padding-bottom:36px;border-bottom:1px solid rgba(250,248,242,0.16)">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;color:#FAF8F2;letter-spacing:0.02em;margin-bottom:14px">APEA-CA</div>
+        <p style="font-size:14px;line-height:1.6;max-width:34ch">Associação de Pais, Educadores e Agricultores de Caeté-Açu · Vale do Capão · Palmeiras, Bahia</p>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#F4C21B;text-transform:uppercase;margin-bottom:14px">Institucional</div>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:15px">
+          <li><a href="#/quem-somos" style="color:#D6E3D6;text-decoration:none" style-hover="color:#FAF8F2">Quem somos</a></li>
+          <li><a href="#/instituicao" style="color:#D6E3D6;text-decoration:none" style-hover="color:#FAF8F2">A instituição</a></li>
+          <li><a href="#/projetos" style="color:#D6E3D6;text-decoration:none" style-hover="color:#FAF8F2">Projetos</a></li>
+          <li><a href="#/blog" style="color:#D6E3D6;text-decoration:none" style-hover="color:#FAF8F2">Blog e comunicados</a></li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#F4C21B;text-transform:uppercase;margin-bottom:14px">Prestação de contas</div>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:15px">
+          <li><a href="#/transparencia" style="color:#D6E3D6;text-decoration:none" style-hover="color:#FAF8F2">Transparência</a></li>
+          <li><a href="#/apoie" style="color:#D6E3D6;text-decoration:none" style-hover="color:#FAF8F2">Apoie</a></li>
+          <li><a href="#/privacidade" style="color:#D6E3D6;text-decoration:none" style-hover="color:#FAF8F2">Privacidade</a></li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.1em;color:#F4C21B;text-transform:uppercase;margin-bottom:14px">Contato</div>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:15px">
+          <li><a href="#/contato" style="color:#D6E3D6;text-decoration:none" style-hover="color:#FAF8F2">Fale com a associação</a></li>
+          <li><a href="#/mapa-do-site" style="color:#D6E3D6;text-decoration:none" style-hover="color:#FAF8F2">Mapa do site e acessibilidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="padding-top:24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:#8FAA90;text-transform:uppercase">
+      <span>CNPJ 01.234.567/0001-89 · dado de exemplo</span>
+      <span>Portal APEA-CA · v1 · 2026</span>
+    </div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;mostrarAvisoDados&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conteúdo&quot;},&quot;mostrarCampanha&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Conteúdo&quot;}}">
+class Component extends DCLogic {
+  state = { route: 'home', slug: null, lang: 'pt', ano: '2025', filtro: 'todos', cat: 'todas', copiado: false, enviado: false };
+
+  corCategoria(c) {
+    if (c === 'Convocação') return { catBg: '#FAF3E4', catInk: '#8A4020' };
+    if (c === 'Comunicado') return { catBg: '#E3F0E4', catInk: '#0C3B21' };
+    if (c === 'Artigo') return { catBg: '#EDE9DE', catInk: '#4A4B44' };
+    return { catBg: '#E9F3EC', catInk: '#14683A' };
+  }
+
+  projetos = [
+    { slug: 'agua-vila', nome: 'Sistema de distribuição de água da Vila', status: 'Ativo', periodo: '2017 — em curso', area: 'Água',
+      resumo: "Implantação e manutenção do abastecimento para a Vila e o entorno, com mais de 150 caixas d'água distribuídas aos sócios.",
+      descricao: "Execução do sistema de distribuição de água da Vila de Caeté-Açu e comunidades do entorno, iniciada em 2017 no âmbito do programa Bahia Produtiva, com implantação concluída e manutenção contínua sob responsabilidade da associação. Mais de 150 caixas d'água foram distribuídas aos sócios ao longo do projeto.",
+      parceiros: 'Bahia Produtiva · CERB · Prefeitura de Palmeiras',
+      metricas: [{ valor: '150+', rotulo: "caixas d'água" }, { valor: '2017', rotulo: 'início' }] },
+    { slug: 'rufino-rocha', nome: 'Espaço Rufino Rocha', status: 'Em captação', periodo: '2019 — em curso', area: 'Cultura',
+      resumo: 'Gestão e revitalização do espaço cedido pela prefeitura para oficinas, assembleias e atividades culturais da comunidade.',
+      descricao: 'Em 2019 a associação recebeu a cessão de uso do espaço Rufino Rocha, por cinco anos, para atividades culturais e comunitárias. A etapa atual busca recursos para recuperar cobertura, piso e instalação elétrica, condição para retomar o uso regular do espaço.',
+      parceiros: 'Prefeitura de Palmeiras · cessão de uso por 5 anos',
+      metricas: [{ valor: '2019', rotulo: 'cessão de uso' }, { valor: '38%', rotulo: 'da meta (exemplo)' }] },
+    { slug: 'sede', nome: 'Construção da sede da APEA-CA', status: 'Concluído', periodo: '2006', area: 'Infraestrutura',
+      resumo: 'Construção da sede própria da associação, que passou a abrigar assembleias, cursos e o atendimento aos associados.',
+      descricao: 'Construção da sede própria da APEA-CA, viabilizada em 2006 com apoio da Natura Cosméticos. A sede deu à associação um endereço permanente para assembleias, formações e atendimento, e é até hoje a base das atividades administrativas.',
+      parceiros: 'Natura Cosméticos',
+      metricas: [{ valor: '2006', rotulo: 'conclusão' }, { valor: '1', rotulo: 'sede própria' }] },
+    { slug: 'centro-digital', nome: 'Centro Digital para a Cidadania', status: 'Concluído', periodo: '2009', area: 'Educação',
+      resumo: 'Implantação de centro de acesso à internet e formação digital na comunidade, em convênio com o Governo da Bahia.',
+      descricao: 'Implantação do Centro Digital para a Cidadania em Caeté-Açu, em 2009, por meio de programa do Governo da Bahia. O centro levou acesso à internet e formação digital para o vale num momento em que isso era raro na Chapada Diamantina.',
+      parceiros: 'Governo da Bahia',
+      metricas: [{ valor: '2009', rotulo: 'implantação' }, { valor: '1', rotulo: 'centro digital' }] },
+    { slug: 'educapao', nome: 'Movimento ÉduCapão', status: 'Concluído', periodo: 'Campanha encerrada', area: 'Educação',
+      resumo: 'Arrecadação e prestação de contas de recursos de terceiros em conta exclusiva, em apoio à educação no vale.',
+      descricao: 'A associação atuou como entidade arrecadadora do Movimento ÉduCapão, recebendo doações de terceiros em conta exclusiva e prestando contas do uso dos recursos. É o precedente de execução financeira que a associação apresenta a financiadores.',
+      parceiros: 'Movimento ÉduCapão · doadores pessoa física',
+      metricas: [{ valor: '1', rotulo: 'conta exclusiva' }, { valor: '100%', rotulo: 'contas prestadas' }] }
+  ];
+
+  posts = [
+    { slug: 'convocacao-assembleia-2026', titulo: 'Convocação: assembleia geral ordinária de 14 de março', categoria: 'Convocação', data: '02/09/2026', autor: 'Secretaria', projeto: null,
+      resumo: 'Pauta de aprovação das contas do exercício 2025, plano de atividades de 2026 e deliberação sobre a captação do Rufino Rocha.',
+      corpo: [
+        { t: 'Ficam convocados todos os associados em situação regular para a assembleia geral ordinária, a realizar-se na sede da associação, na Vila de Caeté-Açu, às 9h, com segunda chamada às 9h30 com qualquer número de presentes.' },
+        { t: 'Pauta: 1) leitura e aprovação da ata anterior; 2) apreciação e votação das contas do exercício 2025, com parecer do conselho fiscal; 3) plano de atividades para 2026; 4) deliberação sobre a captação de recursos para a revitalização do espaço Rufino Rocha; 5) assuntos gerais.' },
+        { t: 'O balanço do exercício fica disponível para consulta na secretaria e na página de transparência do portal a partir de 07/03. Associado que não puder comparecer pode enviar procuração simples, na forma do estatuto.' }
+      ] },
+    { slug: 'agua-manutencao-reservatorio', titulo: 'Manutenção do reservatório principal concluída', categoria: 'Notícia', data: '18/08/2026', autor: 'Diretoria', projeto: 'agua-vila',
+      resumo: 'Limpeza e vedação do reservatório que abastece a Vila, com interrupção programada de dois dias e retomada normal do fornecimento.',
+      corpo: [
+        { t: 'A manutenção anual do reservatório principal foi concluída na semana passada. O serviço incluiu limpeza interna, troca de registros e vedação de duas trincas identificadas na inspeção de julho.' },
+        { t: 'O fornecimento foi interrompido por dois dias, com aviso prévio afixado na sede e comunicado pelos grupos da comunidade. Todas as ligações voltaram a operar normalmente.' },
+        { t: 'A manutenção é custeada pela associação com recursos das contribuições de associados. Os comprovantes entram na prestação de contas do exercício 2026.' }
+      ] },
+    { slug: 'rufino-rocha-orcamento', titulo: 'Orçamento da revitalização do Rufino Rocha aprovado em reunião', categoria: 'Notícia', data: '05/08/2026', autor: 'Diretoria', projeto: 'rufino-rocha',
+      resumo: 'Três orçamentos foram apresentados para cobertura, piso e instalação elétrica. O escolhido é a base da meta de captação divulgada.',
+      corpo: [
+        { t: 'A diretoria apresentou três orçamentos para a recuperação do espaço Rufino Rocha, todos de prestadores da região. A proposta escolhida cobre a substituição da cobertura, o refazimento do piso e a adequação da instalação elétrica.' },
+        { t: 'O valor aprovado é a base da meta de captação publicada na página do projeto. A execução só começa quando o recurso estiver integralmente em conta, para não deixar obra parada no espaço cedido pela prefeitura.' },
+        { t: 'Os orçamentos ficam disponíveis para consulta de qualquer associado na secretaria.' }
+      ] },
+    { slug: 'comunicado-conta-exclusiva', titulo: 'Comunicado: doações passam a entrar em conta exclusiva por campanha', categoria: 'Comunicado', data: '22/07/2026', autor: 'Tesouraria', projeto: null,
+      resumo: 'Cada campanha ativa passa a ter conta ou subconta própria, seguindo o modelo adotado no Movimento ÉduCapão.',
+      corpo: [
+        { t: 'A tesouraria informa que, a partir deste exercício, toda campanha com meta divulgada passa a ter conta ou subconta exclusiva. A medida repete o procedimento adotado na arrecadação do Movimento ÉduCapão e existe para que a origem e o destino de cada real sejam rastreáveis no extrato.' },
+        { t: 'Doações sem destinação declarada seguem para a conta geral e sustentam a manutenção corrente: água, sede e despesas administrativas.' },
+        { t: 'Quem quiser recibo deve enviar o comprovante e os dados fiscais pela página de contato. O recibo é emitido em até 15 dias.' }
+      ] },
+    { slug: 'artigo-agua-comunitaria', titulo: 'Por que a água do Capão é gerida pela própria comunidade', categoria: 'Artigo', data: '10/07/2026', autor: 'Diretoria', projeto: 'agua-vila',
+      resumo: 'Como um sistema implantado com recurso público passou a ser mantido por uma associação de moradores, e o que isso exige de organização.',
+      corpo: [
+        { t: 'Sistemas de abastecimento em comunidades rurais raramente chegam prontos. No caso da Vila, a implantação veio de um programa estadual, mas a operação cotidiana — registro que vaza, bomba que queima, cadastro de ligação nova — ficou com quem mora aqui.' },
+        { t: 'Isso tem um custo de organização que não aparece no convênio: alguém precisa cobrar contribuição, comprar peça, chamar o encanador e prestar contas do que gastou. É esse trabalho, invisível em relatório de projeto, que mantém a água correndo depois que o financiador vai embora.' },
+        { t: 'É também a razão pela qual a associação insiste na contribuição mensal dos associados. Recurso de projeto constrói; contribuição de morador mantém.' }
+      ] },
+    { slug: 'centro-digital-memoria', titulo: 'Dez anos depois: o que ficou do Centro Digital', categoria: 'Artigo', data: '28/06/2026', autor: 'Voluntários', projeto: 'centro-digital',
+      resumo: 'O centro implantado em 2009 formou a primeira geração de moradores do vale com acesso à internet. Um balanço honesto do que funcionou.',
+      corpo: [
+        { t: 'Quando o Centro Digital para a Cidadania chegou a Caeté-Açu, em 2009, havia poucas máquinas conectadas no vale inteiro. O centro funcionou como escola informal de computação para uma geração de moradores.' },
+        { t: 'O equipamento envelheceu e a conexão domiciliar chegou, o que tornou o formato original obsoleto. O que ficou foi menos a infraestrutura e mais o repertório: moradores que aprenderam ali hoje operam a documentação da associação.' },
+        { t: 'A memória desse projeto é parte do acervo que a associação quer organizar, com fotos e depoimentos, assim que houver autorização de uso das imagens.' }
+      ] },
+    { slug: 'chamada-voluntarios-acervo', titulo: 'Chamada para voluntários: organização do acervo de fotos', categoria: 'Comunicado', data: '14/06/2026', autor: 'Secretaria', projeto: null,
+      resumo: 'A associação busca voluntários para digitalizar e catalogar o acervo fotográfico dos últimos trinta anos.',
+      corpo: [
+        { t: 'Trinta anos de atividade produziram caixas de fotografia impressa, atas manuscritas e recortes de jornal. Nada disso está catalogado.' },
+        { t: 'A secretaria busca voluntários para digitalizar, datar e identificar as pessoas nas imagens — trabalho que depende de quem conhece a comunidade, não de equipamento sofisticado.' },
+        { t: 'Nenhuma imagem com pessoa identificável será publicada sem autorização de uso. Interessados podem se apresentar pela página de contato.' }
+      ] }
+  ];
+
+  linhaDoTempoCompleta = [
+    { ano: '1996', titulo: 'Fundação da associação de pais e mestres de Caeté-Açu', parceiro: 'Moradores da comunidade' },
+    { ano: '2006', titulo: 'Construção da sede da APEA-CA', parceiro: 'Natura Cosméticos' },
+    { ano: '2009', titulo: 'Centro Digital para a Cidadania', parceiro: 'Governo da Bahia' },
+    { ano: '2017', titulo: 'Início do sistema de distribuição de água da Vila', parceiro: 'Bahia Produtiva · CERB · Prefeitura de Palmeiras' },
+    { ano: '2019', titulo: 'Cessão de uso do espaço Rufino Rocha', parceiro: 'Prefeitura de Palmeiras · 5 anos' },
+    { ano: '2021', titulo: 'Assento em colegiado municipal', parceiro: 'Prefeitura de Palmeiras' },
+    { ano: '2026', titulo: 'Portal institucional e abertura da prestação de contas', parceiro: 'Em implantação' }
+  ];
+
+  cadastro = [
+    { rotulo: 'Razão social', valor: 'Associação de Pais, Educadores e Agricultores de Caeté-Açu' },
+    { rotulo: 'Sigla', valor: 'APEA-CA' },
+    { rotulo: 'CNPJ', valor: '01.234.567/0001-89 · dado de exemplo' },
+    { rotulo: 'Natureza jurídica', valor: 'Associação privada sem fins lucrativos' },
+    { rotulo: 'Fundação', valor: '1996' },
+    { rotulo: 'Sede', valor: 'Vila de Caeté-Açu · Palmeiras · Bahia' },
+    { rotulo: 'Território de atuação', valor: 'Vale do Capão e comunidades do entorno, Chapada Diamantina' },
+    { rotulo: 'Reconhecimento', valor: 'Municipal e estadual, com assento em colegiado da Prefeitura de Palmeiras' }
+  ];
+
+  diretoria = [
+    { cargo: 'Presidência', nome: 'A confirmar' },
+    { cargo: 'Vice-presidência', nome: 'A confirmar' },
+    { cargo: 'Tesouraria', nome: 'A confirmar' },
+    { cargo: 'Secretaria', nome: 'A confirmar' },
+    { cargo: 'Conselho fiscal', nome: 'Três membros a confirmar' }
+  ];
+
+  documentos = [
+    { tipo: 'Estatuto · vigente', titulo: 'Estatuto social da APEA-CA', resumo: 'Finalidade, quadro social, órgãos de administração, regras de assembleia e destinação do patrimônio.', peso: 'PDF · 1,1 MB' },
+    { tipo: 'Ata · 14/03/2026', titulo: 'Assembleia geral ordinária', resumo: 'Aprovação das contas do exercício 2025 e plano de atividades para 2026.', peso: 'PDF · 212 KB' },
+    { tipo: 'Ata · 08/02/2025', titulo: 'Eleição da diretoria, gestão 2025–2027', resumo: 'Chapa eleita, apuração e posse dos membros da diretoria e do conselho fiscal.', peso: 'PDF · 184 KB' },
+    { tipo: 'Regimento', titulo: 'Regimento interno de uso dos espaços comunitários', resumo: 'Regras de reserva, uso e conservação da sede e do espaço Rufino Rocha.', peso: 'PDF · 96 KB' }
+  ];
+
+  exercicios = {
+    '2025': { ano: '2025', receitas: '148.320,00', despesas: '131.905,44', saldo: '16.414,56', aprovado: '14/03/2026', peso: '420 KB' },
+    '2024': { ano: '2024', receitas: '96.740,00', despesas: '89.112,30', saldo: '7.627,70', aprovado: '22/03/2025', peso: '388 KB' },
+    '2023': { ano: '2023', receitas: '74.210,00', despesas: '71.980,15', saldo: '2.229,85', aprovado: '19/03/2024', peso: '351 KB' }
+  };
+
+  componentDidMount() {
+    this.sync();
+    window.addEventListener('hashchange', this.sync);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this.sync);
+  }
+
+  sync = () => {
+    const raw = (window.location.hash || '').replace(/^#\/?/, '');
+    const parts = raw.split('/').filter(Boolean);
+    const route = parts[0] || 'home';
+    this.setState({ route: route, slug: parts[1] || null, copiado: false, enviado: false });
+    if (typeof window.scrollTo === 'function') window.scrollTo(0, 0);
+  };
+
+  badge(status) {
+    if (status === 'Ativo') return { badgeBg: '#E3F0E4', badgeInk: '#0C3B21' };
+    if (status === 'Em captação') return { badgeBg: '#FAF3E4', badgeInk: '#8A4020' };
+    return { badgeBg: '#EDE9DE', badgeInk: '#4A4B44' };
+  }
+
+  decorar(p) {
+    return Object.assign({}, p, this.badge(p.status));
+  }
+
+  copiarPix = () => {
+    const chave = '01.234.567/0001-89';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(chave).catch(function () {});
+    }
+    this.setState({ copiado: true });
+  };
+
+  enviarForm = (e) => {
+    e.preventDefault();
+    this.setState({ enviado: true });
+  };
+
+  trocarIdioma = () => {
+    this.setState(s => ({ lang: s.lang === 'pt' ? 'en' : 'pt' }));
+  };
+
+  renderVals() {
+    const st = this.state;
+    const decorados = this.projetos.map(p => this.decorar(p));
+    const filtro = st.filtro;
+    const filtrados = filtro === 'todos' ? decorados : decorados.filter(p => p.status === filtro);
+    const proj = decorados.filter(p => p.slug === st.slug)[0] || decorados[0];
+
+    const mapaProj = {};
+    decorados.forEach(p => { mapaProj[p.slug] = p.nome; });
+    const postsDecorados = this.posts.map(p => Object.assign({}, p, this.corCategoria(p.categoria), {
+      projetoNome: p.projeto ? mapaProj[p.projeto] : '',
+      temProjeto: !!p.projeto,
+      href: '#/blog/' + p.slug
+    }));
+    const catAtiva = st.cat;
+    const postsFiltrados = catAtiva === 'todas' || catAtiva === 'Projetos'
+      ? postsDecorados
+      : postsDecorados.filter(p => p.categoria === catAtiva);
+    const categorias = ['todas', 'Notícia', 'Comunicado', 'Artigo', 'Convocação', 'Projetos'].map(c => {
+      const ativo = catAtiva === c;
+      return {
+        chave: c, rotulo: c === 'todas' ? 'Tudo' : c, ativo: ativo,
+        onClick: () => this.setState({ cat: c }),
+        borda: ativo ? '#14683A' : '#D8D2C2',
+        fundo: ativo ? '#14683A' : 'transparent',
+        cor: ativo ? '#FAF8F2' : '#4A4B44'
+      };
+    });
+    const post = postsDecorados.filter(p => p.slug === st.slug)[0] || postsDecorados[0];
+    const atualizacoes = postsDecorados.filter(p => p.projeto === proj.slug);
+
+    const filtros = [
+      { chave: 'todos', rotulo: 'Todos' },
+      { chave: 'Ativo', rotulo: 'Ativos' },
+      { chave: 'Em captação', rotulo: 'Em captação' },
+      { chave: 'Concluído', rotulo: 'Concluídos' }
+    ].map(f => {
+      const ativo = filtro === f.chave;
+      return {
+        rotulo: f.rotulo, ativo: ativo,
+        onClick: () => this.setState({ filtro: f.chave }),
+        borda: ativo ? '#14683A' : '#D8D2C2',
+        fundo: ativo ? '#14683A' : 'transparent',
+        cor: ativo ? '#FAF8F2' : '#4A4B44'
+      };
+    });
+
+    const anos = ['2025', '2024', '2023'].map(a => {
+      const ativo = st.ano === a;
+      return {
+        rotulo: a, ativo: ativo,
+        onClick: () => this.setState({ ano: a }),
+        borda: ativo ? '#14683A' : '#D8D2C2',
+        fundo: ativo ? '#14683A' : 'transparent',
+        cor: ativo ? '#FAF8F2' : '#4A4B44'
+      };
+    });
+
+    const r = st.route;
+    return {
+      avisoDados: this.props.mostrarAvisoDados !== false,
+      mostrarCampanha: this.props.mostrarCampanha !== false,
+      isHome: r === 'home',
+      isQuemSomos: r === 'quem-somos',
+      isProjetos: r === 'projetos',
+      isProjeto: r === 'projeto',
+      isBlog: r === 'blog' && !st.slug,
+      isPost: r === 'blog' && !!st.slug,
+      posts: postsDecorados,
+      postsFiltrados: postsFiltrados,
+      postsRecentes: postsDecorados.slice(0, 3),
+      categorias: categorias,
+      catProjetos: catAtiva === 'Projetos',
+      catPosts: catAtiva !== 'Projetos',
+      post: post,
+      atualizacoes: atualizacoes,
+      temAtualizacoes: atualizacoes.length > 0,
+      semAtualizacoes: atualizacoes.length === 0,
+      isApoie: r === 'apoie',
+      isInstituicao: r === 'instituicao',
+      isTransparencia: r === 'transparencia',
+      isContato: r === 'contato',
+      isPrivacidade: r === 'privacidade',
+      isMapa: r === 'mapa-do-site',
+      fallbackEn: st.lang === 'en',
+      rotuloIdioma: st.lang === 'pt' ? 'PT / en' : 'pt / EN',
+      trocarIdioma: this.trocarIdioma,
+      projetos: decorados,
+      projetosFiltrados: filtrados,
+      destaques: decorados.slice(0, 3),
+      proj: proj,
+      filtros: filtros,
+      anos: anos,
+      ano: st.ano,
+      exercicio: this.exercicios[st.ano],
+      linhaDoTempo: this.linhaDoTempoCompleta.slice(0, 5),
+      linhaDoTempoCompleta: this.linhaDoTempoCompleta,
+      cadastro: this.cadastro,
+      diretoria: this.diretoria,
+      documentos: this.documentos,
+      copiarPix: this.copiarPix,
+      rotuloCopiar: st.copiado ? 'Chave copiada' : 'Copiar chave',
+      enviarForm: this.enviarForm,
+      rotuloEnvio: st.enviado ? 'Pedido registrado' : 'Enviar'
+    };
+  }
+}
+</script>
+</body>
+</html>
